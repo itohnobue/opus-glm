@@ -63,10 +63,10 @@ The workflow is defined in `CLAUDE.md` and activates automatically when Opus rec
 2. **Prepares** — writes prompts with agent persona + key files + must-answer questions + quality rules
 3. **Spawns** — runs agents in parallel via `spawn-glm.sh`
 4. **Waits** — monitors progress and detects stalled agents via `wait-glm.sh`
-5. **Verifies** — reads every finding, checks cited files, labels VERIFIED/REJECTED
+5. **Verifies** — reads every finding, checks cited files, labels VERIFIED/REJECTED/DOWNGRADED/UNABLE TO VERIFY
 6. **Delivers** — synthesizes results, fixes issues, writes summary
 
-Multi-stage workflows are supported — later stages use verified results from earlier stages.
+Multi-stage workflows are supported — later stages use verified results from earlier stages. Stages can be **iterative** (mandatory for production checks, final audits) — agents run repeatedly with varied approaches until convergence (2 consecutive iterations with no new actionable findings).
 
 ### Agents (110 Specialists)
 
